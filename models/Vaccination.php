@@ -7,6 +7,8 @@ use Yii;
 /**
  * This is the model class for table "vaccination".
  *
+ * @property int $id
+ * @property int $user_id
  * @property string $bcg_dose1_given
  * @property string $bcg_dose1_nextvisit
  * @property string $dpt_dose1_given
@@ -40,6 +42,8 @@ class Vaccination extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['user_id'], 'required'],
+            [['user_id'], 'integer'],
             [['bcg_dose1_given', 'bcg_dose1_nextvisit', 'dpt_dose1_given', 'dpt_dose1_nextvisit', 'polio_dose1_given', 'polio_dose1_nextvisit', 'measles_dose1_given', 'measles_dose1_nextvisit'], 'safe'],
         ];
     }
@@ -50,6 +54,8 @@ class Vaccination extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+            'id' => 'ID',
+            'user_id' => 'User ID',
             'bcg_dose1_given' => 'Bcg Dose1 Given',
             'bcg_dose1_nextvisit' => 'Bcg Dose1 Nextvisit',
             'dpt_dose1_given' => 'Dpt Dose1 Given',

@@ -34,8 +34,6 @@ $this->title = 'Mama Fair';
         ]
     ]);
      ?>
-
-    <?//= $form->field($model, 'bcg_dose1_given')->textInput(['autofocus' => true]) ?>
     </div>
     <div class="col-md-6">
     <br>
