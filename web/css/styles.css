@@ -6,7 +6,7 @@ body {
     margin: 0px auto;
     padding: 0;
     font-family: 'Oxygen', 'sans-serif';
-    font-size: 1.4em;
+    font-size: 1.3em;
     color: #333;
     background: #fff;
 }
@@ -220,7 +220,7 @@ div#sitename h1 a:hover {
 /** body **/
 
 section#body {
-    padding: 10px 0;
+    padding: 5px 0;
     background: #fff;
 }
 
