@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Vaccination */
+/* @var $model app\models\UserRole */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Vaccinations', 'url' => ['index']];
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'User Roles', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="vaccination-view">
+<div class="user-role-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,17 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'user_id',
-            'bcg_dose1_given',
-            'bcg_dose1_nextvisit',
-            'dpt_dose1_given',
-            'dpt_dose1_nextvisit',
-            'polio_dose1_given',
-            'polio_dose1_nextvisit',
-            'measles_dose1_given',
-            'measles_dose1_nextvisit',
-            'created_at',
-            'updated_at',
+            'name',
+            'description',
+            'forbidden_items',
         ],
     ]) ?>
 

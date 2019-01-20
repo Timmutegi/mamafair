@@ -1,5 +1,6 @@
 <?php
 
+use kartik\date\DatePicker;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -12,23 +13,111 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
+    <?= $form->field($model, 'user_id')->hiddenInput()->label(false) ?>
 
-    <?= $form->field($model, 'bcg_dose1_given')->textInput() ?>
+    <div class="row">
+        <div class="col-md-6">
+            <?= Html::label ('BCG') ?>
+            <?= $form->field($model, 'bcg_dose1_given')->label(false)->widget(Datepicker::classname(),[
+                'options' => ['placeholder' => 'Date Given'],
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' => 'yyyy-mm-dd',
+                ]
+            ]);
+            ?>
+        </div>
+        <div class="col-md-6">
+            <br>
+            <?= $form->field($model, 'bcg_dose1_nextvisit')->label(false)->widget(Datepicker::classname(),[
+                'options' => ['placeholder' => 'Next Visit'],
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' => 'yyyy-mm-dd',
+                ]
+            ]);
+            ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'bcg_dose1_nextvisit')->textInput() ?>
+    <div class="row">
+        <div class="col-md-6">
+            <?= Html::label ('DPT') ?>
+            <?= $form->field($model, 'dpt_dose1_given')->label(false)->widget(Datepicker::classname(),[
+                'options' => ['placeholder' => 'Date Given'],
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' => 'yyyy-mm-dd',
+                ]
+            ]);
+            ?>
+        </div>
+        <div class="col-md-6">
+            <br>
+            <?= $form->field($model, 'dpt_dose1_nextvisit')->label(false)->widget(Datepicker::classname(),[
+                'options' => ['placeholder' => 'Next Visit'],
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' => 'yyyy-mm-dd',
+                ]
+            ]);
+            ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'dpt_dose1_given')->textInput() ?>
+    <div class="row">
+        <div class="col-md-6">
+            <?= Html::label ('polio') ?>
+            <?= $form->field($model, 'polio_dose1_given')->label(false)->widget(Datepicker::classname(),[
+                'options' => ['placeholder' => 'Date Given'],
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' => 'yyyy-mm-dd',
+                ]
+            ]);
+            ?>
+        </div>
+        <div class="col-md-6">
+            <br>
+            <?= $form->field($model, 'polio_dose1_nextvisit')->label(false)->widget(Datepicker::classname(),[
+                'options' => ['placeholder' => 'Next Visit'],
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' => 'yyyy-mm-dd',
+                ]
+            ]);
+            ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'dpt_dose1_nextvisit')->textInput() ?>
+    <div class="row">
+        <div class="col-md-6">
+            <?= Html::label ('BCG') ?>
+            <?= $form->field($model, 'measles_dose1_given')->label(false)->widget(Datepicker::classname(),[
+                'options' => ['placeholder' => 'Date Given'],
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' => 'yyyy-mm-dd',
+                ]
+            ]);
+            ?>
+        </div>
+        <div class="col-md-6">
+            <br>
+            <?= $form->field($model, 'measles_dose1_nextvisit')->label(false)->widget(Datepicker::classname(),[
+                'options' => ['placeholder' => 'Next Visit'],
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' => 'yyyy-mm-dd',
+                ]
+            ]);
+            ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'polio_dose1_given')->textInput() ?>
+    <?= $form->field($model, 'created_at')->textInput() ?>
 
-    <?= $form->field($model, 'polio_dose1_nextvisit')->textInput() ?>
-
-    <?= $form->field($model, 'measles_dose1_given')->textInput() ?>
-
-    <?= $form->field($model, 'measles_dose1_nextvisit')->textInput() ?>
+    <?= $form->field($model, 'updated_at')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

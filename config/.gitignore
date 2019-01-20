@@ -1,0 +1,5 @@
+# ignore db config file
+db.php
+
+# files with json format
+*.json

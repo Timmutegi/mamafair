@@ -3,18 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Vaccination;
-use yii\behaviors\TimestampBehavior;
+use app\models\UserRole;
 use yii\data\ActiveDataProvider;
-use yii\db\Expression;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * VaccinationController implements the CRUD actions for Vaccination model.
+ * UserRoleController implements the CRUD actions for UserRole model.
  */
-class VaccinationController extends Controller
+class UserRoleController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -28,23 +26,17 @@ class VaccinationController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
-            [
-                'class' => TimestampBehavior::className(),
-                'createdAtAttribute' => 'create_time',
-                'updatedAtAttribute' => 'update_time',
-                'value' => new Expression('NOW()'),
-            ],
         ];
     }
 
     /**
-     * Lists all Vaccination models.
+     * Lists all UserRole models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Vaccination::find(),
+            'query' => UserRole::find(),
         ]);
 
         return $this->render('index', [
@@ -53,7 +45,7 @@ class VaccinationController extends Controller
     }
 
     /**
-     * Displays a single Vaccination model.
+     * Displays a single UserRole model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -66,17 +58,14 @@ class VaccinationController extends Controller
     }
 
     /**
-     * Creates a new Vaccination model.
+     * Creates a new UserRole model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Vaccination();
-        $model->user_id = Yii::$app->getUser()->id;
-//        $model->created_at = new Expression('NOW()');
-//        $model->updated_at = new Expression('NOW()');
-//        $model->touch('created_at');
+        $model = new UserRole();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -87,7 +76,7 @@ class VaccinationController extends Controller
     }
 
     /**
-     * Updates an existing Vaccination model.
+     * Updates an existing UserRole model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +85,6 @@ class VaccinationController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $model->updated_at = new Expression('NOW()');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -108,7 +96,7 @@ class VaccinationController extends Controller
     }
 
     /**
-     * Deletes an existing Vaccination model.
+     * Deletes an existing UserRole model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -122,15 +110,15 @@ class VaccinationController extends Controller
     }
 
     /**
-     * Finds the Vaccination model based on its primary key value.
+     * Finds the UserRole model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Vaccination the loaded model
+     * @return UserRole the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Vaccination::findOne($id)) !== null) {
+        if (($model = UserRole::findOne($id)) !== null) {
             return $model;
         }
 

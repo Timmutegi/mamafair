@@ -17,17 +17,12 @@ use Yii;
  * @property string $polio_dose1_nextvisit
  * @property string $measles_dose1_given
  * @property string $measles_dose1_nextvisit
+ * @property string $created_at
+ * @property string $updated_at
+ * @method touch($string)
  */
 class Vaccination extends \yii\db\ActiveRecord
 {
-    public $bcg_dose1_given;
-    public $bcg_dose1_nextvisit;
-    public $dpt_dose1_given;
-    public $dpt_dose1_nextvisit;
-    public $polio_dose1_given;
-    public $polio_dose1_nextvisit;
-    public $measles_dose1_given;
-    public $measles_dose1_nextvisit;
     /**
      * {@inheritdoc}
      */
@@ -42,9 +37,9 @@ class Vaccination extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id'], 'required'],
+            [['user_id', 'bcg_dose1_given', 'dpt_dose1_given', 'polio_dose1_given', 'measles_dose1_given'], 'required'],
             [['user_id'], 'integer'],
-            [['bcg_dose1_given', 'bcg_dose1_nextvisit', 'dpt_dose1_given', 'dpt_dose1_nextvisit', 'polio_dose1_given', 'polio_dose1_nextvisit', 'measles_dose1_given', 'measles_dose1_nextvisit'], 'safe'],
+            [['bcg_dose1_given', 'bcg_dose1_nextvisit', 'dpt_dose1_given', 'dpt_dose1_nextvisit', 'polio_dose1_given', 'polio_dose1_nextvisit', 'measles_dose1_given', 'measles_dose1_nextvisit', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -64,23 +59,8 @@ class Vaccination extends \yii\db\ActiveRecord
             'polio_dose1_nextvisit' => 'Polio Dose1 Nextvisit',
             'measles_dose1_given' => 'Measles Dose1 Given',
             'measles_dose1_nextvisit' => 'Measles Dose1 Nextvisit',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
-    }
-
-    public function addVaccination(){
-        $vaccine = new Vaccination();
-
-        $vaccine->bcg_dose1_given = $this->bcg_dose1_given;
-        $vaccine->bcg_dose1_nextvisit = $this->bcg_dose1_nextvisit;
-        $vaccine->dpt_dose1_given = $this->dpt_dose1_given;
-        $vaccine->dpt_dose1_nextvisit = $this->dpt_dose1_nextvisit;
-        $vaccine->polio_dose1_given = $this->polio_dose1_given;
-        $vaccine->polio_dose1_nextvisit = $this->polio_dose1_nextvisit;
-        $vaccine->measles_dose1_given = $this->measles_dose1_given;
-        $vaccine->measles_dose1_nextvisit = $this->measles_dose1_nextvisit;
-        $vaccine->user_id = Yii::$app->user->id;
-
-        return $vaccine->save() ? $vaccine : null;
-
     }
 }

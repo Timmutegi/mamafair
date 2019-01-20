@@ -46,7 +46,8 @@ $this->title = 'Mama Fair';
     ]);
      ?>
     </div>
-    </div>
+</div>
+
     <div class="row">
     <div class="col-md-6">
     <?= Html::label ('DPT') ?>

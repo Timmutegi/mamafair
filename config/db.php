@@ -3,8 +3,8 @@
 return [
     'class' => 'yii\db\Connection',
     'dsn' => 'mysql:host=localhost;dbname=mamafair',
-    'username' => 'phpmyadmin',
-    'password' => 'some_pass',
+    'username' => 'root',
+    'password' => 'kim',
     'charset' => 'utf8',
 
     // Schema cache options (for production environment)
