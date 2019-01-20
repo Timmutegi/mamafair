@@ -1,5 +1,6 @@
 <?php
 
+use app\models\User;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -28,8 +29,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'user_id',
+                [
+                    'attribute' => 'user_id',
+                    'value' => function ($model){
+                        return User::findOne($model->user_id)->username;
+                    },
+                ],
             'bcg_dose1_given',
             'bcg_dose1_nextvisit',
             'dpt_dose1_given',
@@ -38,8 +43,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'polio_dose1_nextvisit',
             'measles_dose1_given',
             'measles_dose1_nextvisit',
-            'created_at',
-            'updated_at',
         ],
     ]) ?>
 

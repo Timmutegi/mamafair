@@ -74,9 +74,7 @@ class VaccinationController extends Controller
     {
         $model = new Vaccination();
         $model->user_id = Yii::$app->getUser()->id;
-//        $model->created_at = new Expression('NOW()');
-//        $model->updated_at = new Expression('NOW()');
-//        $model->touch('created_at');
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }

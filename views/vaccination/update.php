@@ -12,7 +12,11 @@ $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="vaccination-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="jumbotron">
+        <h1>MAMA FAIR</h1>
+
+        <p class="lead">Online Immunization Form</p>
+    </div>
 
     <?= $this->render('_form', [
         'model' => $model,

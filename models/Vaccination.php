@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "vaccination".
@@ -21,7 +23,7 @@ use Yii;
  * @property string $updated_at
  * @method touch($string)
  */
-class Vaccination extends \yii\db\ActiveRecord
+class Vaccination extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -32,6 +34,16 @@ class Vaccination extends \yii\db\ActiveRecord
     }
 
     /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function rules()
@@ -39,7 +51,7 @@ class Vaccination extends \yii\db\ActiveRecord
         return [
             [['user_id', 'bcg_dose1_given', 'dpt_dose1_given', 'polio_dose1_given', 'measles_dose1_given'], 'required'],
             [['user_id'], 'integer'],
-            [['bcg_dose1_given', 'bcg_dose1_nextvisit', 'dpt_dose1_given', 'dpt_dose1_nextvisit', 'polio_dose1_given', 'polio_dose1_nextvisit', 'measles_dose1_given', 'measles_dose1_nextvisit', 'created_at', 'updated_at'], 'safe'],
+            [['bcg_dose1_given', 'bcg_dose1_nextvisit', 'dpt_dose1_given', 'dpt_dose1_nextvisit', 'polio_dose1_given', 'polio_dose1_nextvisit', 'measles_dose1_given', 'measles_dose1_nextvisit'], 'safe'],
         ];
     }
 
@@ -62,5 +74,13 @@ class Vaccination extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser(){
+        return $this->hasOne(User::className(), ['id'=>'user_id']);
     }
 }
