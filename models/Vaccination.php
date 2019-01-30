@@ -13,12 +13,25 @@ use yii\db\ActiveRecord;
  * @property int $user_id
  * @property string $bcg_dose1_given
  * @property string $bcg_dose1_nextvisit
- * @property string $dpt_dose1_given
- * @property string $dpt_dose1_nextvisit
+ * @property string $BCG_dose2_date_given
+ * @property string $BCG_dose2_date_nextvisit
+ * @property string $BCG_scar_date_checked
+ * @property string $BCG_scar_absent_date_redone
+ * @property string $DPT_dose_given
+ * @property string $DPT_dose_nextvisit
+ * @property string $DPT_dose1_given
+ * @property string $DPT_dose1_nextvisit
+ * @property string $DPT_dose2_given
+ * @property string $DPT_dose2_nextvisit
+ * @property string $DPT_dose3_given
+ * @property string $DPT_dose3_nextvisit
  * @property string $polio_dose1_given
  * @property string $polio_dose1_nextvisit
- * @property string $measles_dose1_given
- * @property string $measles_dose1_nextvisit
+ * @property string $polio_dose2_given
+ * @property string $polio_dose2_nextvisit
+ * @property string $polio_dose3_given
+ * @property string $polio_dose3_nextvisit
+ * @property string $measles_date_given
  * @property string $created_at
  * @property string $updated_at
  * @method touch($string)
@@ -49,9 +62,9 @@ class Vaccination extends ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'bcg_dose1_given', 'dpt_dose1_given', 'polio_dose1_given', 'measles_dose1_given'], 'required'],
+            [['user_id', 'bcg_dose1_given', 'DPT_dose1_given', 'polio_dose1_given'], 'required'],
             [['user_id'], 'integer'],
-            [['bcg_dose1_given', 'bcg_dose1_nextvisit', 'dpt_dose1_given', 'dpt_dose1_nextvisit', 'polio_dose1_given', 'polio_dose1_nextvisit', 'measles_dose1_given', 'measles_dose1_nextvisit'], 'safe'],
+            [['bcg_dose1_given', 'bcg_dose1_nextvisit', 'BCG_dose2_date_given', 'BCG_dose2_date_nextvisit', 'BCG_scar_date_checked', 'BCG_scar_absent_date_redone', 'DPT_dose_given', 'DPT_dose_nextvisit', 'DPT_dose1_given', 'DPT_dose1_nextvisit', 'DPT_dose2_given', 'DPT_dose2_nextvisit', 'DPT_dose3_given', 'DPT_dose3_nextvisit', 'polio_dose1_given', 'polio_dose1_nextvisit', 'polio_dose2_given', 'polio_dose2_nextvisit', 'polio_dose3_given', 'polio_dose3_nextvisit','measles_date_given'], 'safe'],
         ];
     }
 
@@ -62,15 +75,28 @@ class Vaccination extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'User ID',
-            'bcg_dose1_given' => 'Bcg Dose1 Given',
-            'bcg_dose1_nextvisit' => 'Bcg Dose1 Nextvisit',
-            'dpt_dose1_given' => 'Dpt Dose1 Given',
-            'dpt_dose1_nextvisit' => 'Dpt Dose1 Nextvisit',
-            'polio_dose1_given' => 'Polio Dose1 Given',
-            'polio_dose1_nextvisit' => 'Polio Dose1 Nextvisit',
-            'measles_dose1_given' => 'Measles Dose1 Given',
-            'measles_dose1_nextvisit' => 'Measles Dose1 Nextvisit',
+            'user_id' => 'User Name',
+            'bcg_dose1_given' => 'BCG Dose 1 Date Given',
+            'bcg_dose1_nextvisit' => 'BCG Dose 1 Next visit',
+            'BCG_dose2_date_given' => 'BCG Dose 2 Date Given',
+            'BCG_dose2_date_nextvisit' => 'BCG Dose 2 Next visit',
+            'BCG_scar_date_checked' => 'BCG Scar Date Checked',
+            'BCG_scar_absent_date_redone' => 'BCG Scar Absent Date Redone',
+            'DPT_dose_given' => 'DPT At Birth Date Given',
+            'DPT_dose_nextvisit' => 'DPT Dose Next visit',
+            'DPT_dose1_given' => 'DPT Dose 1 Date Given',
+            'DPT_dose1_nextvisit' => 'DPT Dose 1 Next visit',
+            'DPT_dose2_given' => 'DPT Dose 2 Date Given',
+            'DPT_dose2_nextvisit' => 'DPT Dose 2 Next visit',
+            'DPT_dose3_given' => 'DPT Dose 3 Date Given',
+            'DPT_dose3_nextvisit' => 'DPT Dose 3 Next visit',
+            'polio_dose1_given' => 'Polio Dose 1 Date Given',
+            'polio_dose1_nextvisit' => 'Polio Dose 1 Next visit',
+            'polio_dose2_given' => 'Polio Dose 2 Date Given',
+            'polio_dose2_nextvisit' => 'Polio Dose 2 Next visit',
+            'polio_dose3_given' => 'Polio Dose 3 Date Given',
+            'polio_dose3_nextvisit' => 'Polio Dose 3 Next visit',
+            'measles_date_given' => 'Measles Date Given',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];

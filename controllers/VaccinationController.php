@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use yii\filters\AccessControl;
 use app\models\Vaccination;
 use yii\behaviors\TimestampBehavior;
 use yii\data\ActiveDataProvider;
@@ -22,6 +23,17 @@ class VaccinationController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['logout', 'create', 'index', 'update','view'],
+                'rules' => [
+                    [
+                        'actions' => ['logout', 'create', 'index', 'update','view'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

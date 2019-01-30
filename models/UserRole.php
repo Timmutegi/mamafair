@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\web\User;
 
 /**
  * This is the model class for table "user_role".
@@ -31,6 +32,7 @@ class UserRole extends \yii\db\ActiveRecord
             [['name'], 'required'],
             [['name', 'description'], 'string', 'max' => 255],
             [['forbidden_items'], 'string', 'max' => 500],
+            //[['role'], 'required'],
         ];
     }
 
@@ -45,5 +47,13 @@ class UserRole extends \yii\db\ActiveRecord
             'description' => 'Description',
             'forbidden_items' => 'Forbidden Items',
         ];
+    }
+
+       /**
+     * @inheritdoc
+     */
+    public static function getList()
+    {
+        return ['Doctor', 'Patient'];
     }
 }

@@ -4,6 +4,10 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use app\models\User;
+use yii\helpers\ArrayHelper;
+use app\models\SignupForm;
+use common\widgets\select2\Select2;
+use app\models\UserRole;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -31,6 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'email') ?>
 
                 <?= $form->field($model, 'phone') ?>
+
+                <?= $form->field($model, 'role')->dropDownList(UserRole::getList())?>
 
                 <?= $form->field($model, 'password')->passwordInput() ?>
 

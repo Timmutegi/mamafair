@@ -40,9 +40,8 @@ AppAsset::register($this);
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'Pre & Post Natal Information', 'url' => ['/site/info']],
         ['label' => 'Doctor Services', 'url' => ['/site/doctors']],
-        ['label' => 'Immunization Form', 'url' => ['/site/immunization']],
-        ['label' => 'New Immunization Form', 'url' => ['/vaccination/create']],
-        ['label' => 'About', 'url' => ['/site/about']],
+        ['label' => 'Immunization Form', 'url' => ['/vaccination/index']],
+        //['label' => 'About', 'url' => ['/site/about']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
